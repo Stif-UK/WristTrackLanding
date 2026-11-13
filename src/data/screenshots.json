@@ -1,0 +1,30 @@
+[
+  {
+    "id": "watchbox",
+    "title": "Your Digital Watch Box",
+    "caption": "Switch between List, Grid, and full-screen Gallery views with custom sorting, or use realtime search to quickly find the watch you're looking for.",
+    "darkImage": "/screenshots/watchbox-dark.png",
+    "lightImage": "/screenshots/watchbox-light.png"
+  },
+  {
+    "id": "wrist-recap",
+    "title": "Wear Stats & Wrist Recap",
+    "caption": "Generate charts to analyze wear frequency, cost-per-wear or the details of your collection...\nor use the WristRecap feature to see dashboards of your wear habits, monthly, annually or for a period of your choice!",
+    "darkImage": "/screenshots/stats-dark.png",
+    "lightImage": "/screenshots/stats-light.png"
+  },
+  {
+    "id": "accuracy",
+    "title": "Watch setting",
+    "caption": "Get the accurate time, synced with atomic time servers.\nWristTrack Pro users can also get moon phase information and save multiple additional timezones for GMT setting.",
+    "darkImage": "/screenshots/accuracy-dark.png",
+    "lightImage": "/screenshots/accuracy-light.png"
+  },
+  {
+    "id": "calendar",
+    "title": "Wear Calendar",
+    "caption": "Visualize every wear day, warranty expiry, and service date at a glance.",
+    "darkImage": "/screenshots/calendar-dark.png",
+    "lightImage": "/screenshots/calendar-light.png"
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "name": "WristTrack",
+  "tagline": "Your Digital Watch Box",
+  "description": "Track your watch collection, log what's on your wrist, sync with atomic time, and analyze your wearing habits—offline-first with optional cloud sync.",
+  "iosAppId": "1642718252",
+  "appStoreUrl": "https://apps.apple.com/us/app/id1642718252",
+  "playStoreUrl": "https://play.google.com/store/apps/details?id=com.stifdev.wristcheck",
+  "merchStoreUrl": "https://wristtrack.teemill.com/",
+  "blogUrl": "https://wristtrack.teemill.com/blog/",
+  "instagramUrl": "https://www.instagram.com/wristtrack.app/",
+  "email": "feedback@wristtrack.app",
+  "supportEmail": "support@wristtrack.app",
+  "features": [
+    {
+      "title": "Manage Your Watch Collection",
+      "description": "Add detailed specs, purchase history, and notes for every watch in your collection, wishlist, or archive.",
+      "icon": "collection"
+    },
+    {
+      "title": "Track What You Wear",
+      "description": "Quickly log what's on your wrist and view interactive charts and monthly Wrist Recaps to see what gets the most wrist time.",
+      "icon": "chart"
+    },
+    {
+      "title": "Atomic Time & GMT",
+      "description": "Set your mechanical watches accurately with network time synced to atomic clocks, plus multi-timezone GMT tracking.",
+      "icon": "clock"
+    },
+    {
+      "title": "Track Accuracy",
+      "description": "Log timing checkpoints against atomic time to calculate your timepiece's drift in seconds per day, month, or year.",
+      "icon": "target"
+    },
+    {
+      "title": "Gallery & Multi-Photo",
+      "description": "Save up to three images per watch—dial, caseback, or strap combos—and showcase your box in full-screen gallery view.",
+      "icon": "camera"
+    },
+    {
+      "title": "Local-First + Optional Cloud Sync",
+      "description": "Works completely offline with fast local storage, or sign in to sync across iPhone, iPad, and Android devices.",
+      "icon": "cloud"
+    },
+    {
+      "title": "Daily Wear Reminders",
+      "description": "Set custom daily reminders so you never forget to log your morning or evening watch swap.",
+      "icon": "calendar"
+    },
+    {
+      "title": "Instant Real-Time Search",
+      "description": "Find any watch in a large collection immediately—filter by status, movement, or lug width for strap swaps.",
+      "icon": "search"
+    },
+    {
+      "title": "Always Free Core + Pro Extras",
+      "description": "Core collection and wear tracking are always free. Upgrade with a one-off 'Pay What You Like' donation to remove ads and unlock Pro nerd stats.",
+      "icon": "sparkles"
+    }
+  ]
+}

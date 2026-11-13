@@ -1,0 +1,167 @@
+---
+import reviews from '../data/reviews.json';
+const initialCount = 6;
+---
+
+<section id="reviews" class="py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Trusted by Watch Collectors</h2>
+      <p class="mt-3 text-slate-400">
+        A selection of Five-star feedback from collectors tracking their boxes across iOS and Android.
+      </p>
+
+      <!-- Platform Filter Pills -->
+      <div class="mt-6 inline-flex rounded-full border border-slate-800 bg-slate-900/80 p-1 text-xs font-medium">
+        <button
+          type="button"
+          data-review-filter="all"
+          class="review-filter-btn rounded-full bg-brand-500 px-4 py-1.5 font-bold text-slate-950 transition"
+        >
+          All ({reviews.length})
+        </button>
+        <button
+          type="button"
+          data-review-filter="apple"
+          class="review-filter-btn rounded-full px-4 py-1.5 text-slate-300 transition hover:text-white"
+        >
+          App Store ({reviews.filter((r) => r.platform === 'apple').length})
+        </button>
+        <button
+          type="button"
+          data-review-filter="google"
+          class="review-filter-btn rounded-full px-4 py-1.5 text-slate-300 transition hover:text-white"
+        >
+          Google Play ({reviews.filter((r) => r.platform === 'google').length})
+        </button>
+      </div>
+    </div>
+
+    <div id="reviews-grid" class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {reviews.map((review, index) => {
+        const isApple = review.platform === 'apple';
+        return (
+          <article
+            data-platform={review.platform}
+            data-review-index={index}
+            class:list={[
+              'review-card flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-sm',
+              index >= initialCount && 'hidden extra-review',
+            ]}
+          >
+            <div>
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex text-amber-400" aria-label={`${review.rating} out of 5 stars`}>
+                  {Array.from({ length: review.rating }).map(() => (
+                    <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+
+                {isApple ? (
+                  <span class="inline-flex items-center gap-1.5 rounded-full border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-medium text-slate-200">
+                    <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.96 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.78-.96 2.84 1.04.08 2.08-.52 2.72-1.3z" />
+                    </svg>
+                    App Store
+                  </span>
+                ) : (
+                  <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-950/50 px-2.5 py-1 text-xs font-medium text-emerald-300">
+                    <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
+                      <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.37.6 1.23 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z" />
+                    </svg>
+                    Google Play
+                  </span>
+                )}
+              </div>
+
+              <h3 class="mt-4 font-semibold text-white">{review.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-slate-300">"{review.body}"</p>
+            </div>
+
+            <div class="mt-6 flex items-center justify-between border-t border-slate-800/80 pt-3 text-xs text-slate-500">
+              <div>
+                <span class="font-medium text-slate-300">{review.author}</span>
+                {review.country && <span class="text-slate-500"> · {review.country}</span>}
+              </div>
+              <span>{review.date}</span>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    {reviews.length > initialCount && (
+      <div class="mt-10 text-center" id="toggle-reviews-wrap">
+        <button
+          type="button"
+          id="toggle-reviews-btn"
+          class="rounded-full border border-slate-700 bg-slate-900 px-6 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-brand-500 hover:text-white"
+        >
+          Show All {reviews.length} Reviews
+        </button>
+      </div>
+    )}
+  </div>
+</section>
+
+<script>
+  const filterBtns = document.querySelectorAll('.review-filter-btn');
+  const cards = document.querySelectorAll('.review-card');
+  const toggleBtn = document.getElementById('toggle-reviews-btn');
+  const toggleWrap = document.getElementById('toggle-reviews-wrap');
+
+  let expanded = false;
+  let currentFilter = 'all';
+
+  function updateReviews() {
+    let shown = 0;
+    let matchingTotal = 0;
+
+    cards.forEach((card) => {
+      const platform = card.getAttribute('data-platform');
+      const matches = currentFilter === 'all' || platform === currentFilter;
+
+      if (!matches) {
+        card.classList.add('hidden');
+        return;
+      }
+
+      matchingTotal++;
+      if (expanded || shown < 6) {
+        card.classList.remove('hidden');
+        shown++;
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+
+    if (toggleWrap && toggleBtn) {
+      if (matchingTotal <= 6) {
+        toggleWrap.classList.add('hidden');
+      } else {
+        toggleWrap.classList.remove('hidden');
+        toggleBtn.textContent = expanded ? 'Show Fewer Reviews' : `Show All ${matchingTotal} Reviews`;
+      }
+    }
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      currentFilter = btn.getAttribute('data-review-filter') || 'all';
+      filterBtns.forEach((b) => {
+        b.classList.remove('bg-brand-500', 'font-bold', 'text-slate-950');
+        b.classList.add('text-slate-300');
+      });
+      btn.classList.add('bg-brand-500', 'font-bold', 'text-slate-950');
+      btn.classList.remove('text-slate-300');
+      updateReviews();
+    });
+  });
+
+  toggleBtn?.addEventListener('click', () => {
+    expanded = !expanded;
+    updateReviews();
+  });
+</script>

@@ -1,0 +1,206 @@
+---
+import screenshots from '../data/screenshots.json';
+---
+
+<section id="screenshots" class="border-y border-slate-800/80 bg-slate-900/50 py-20">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Inside WristTrack 2.0</h2>
+      <p class="mt-3 text-slate-400">
+        Designed to be fast, offline-capable, and packed with horological stats.
+      </p>
+    </div>
+
+    <div class="mt-12 grid items-center gap-10 lg:grid-cols-12">
+      <!-- Interactive Selector Tabs -->
+      <div class="space-y-3 lg:col-span-5" id="screenshot-tabs">
+        {screenshots.map((shot, idx) => (
+          <button
+            type="button"
+            data-shot-index={idx}
+            class:list={[
+              'shot-tab w-full rounded-2xl border p-5 text-left transition',
+              idx === 0
+                ? 'border-brand-500 bg-slate-800/90 shadow-lg shadow-brand-950/40'
+                : 'border-slate-800 bg-slate-900/60 hover:border-slate-700',
+            ]}
+          >
+            <p class="font-semibold text-white">{shot.title}</p>
+            <p class="mt-1 whitespace-pre-line text-sm text-slate-400">{shot.caption}</p>
+          </button>
+        ))}
+      </div>
+
+      <!-- Phone Preview Frame + Theme Switcher -->
+      <div class="flex flex-col items-center lg:col-span-7">
+        <!-- Light / Dark Mode Toggle Pill -->
+        <div
+          class="mb-6 inline-flex items-center rounded-full border border-slate-800 bg-slate-950 p-1 text-xs font-semibold shadow-inner"
+          role="group"
+          aria-label="App theme preview"
+        >
+          <button
+            type="button"
+            data-theme-btn="dark"
+            class="theme-toggle-btn inline-flex items-center gap-1.5 rounded-full bg-brand-500 px-4 py-1.5 font-bold text-slate-950 transition"
+          >
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20">
+              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+            </svg>
+            Dark Theme
+          </button>
+          <button
+            type="button"
+            data-theme-btn="light"
+            class="theme-toggle-btn inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-slate-300 transition hover:text-white"
+          >
+            <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Light Theme
+          </button>
+        </div>
+
+        <!-- iPhone 18 Pro Device Frame -->
+        <div class="relative mx-auto w-[310px] sm:w-[334px]">
+          <!-- Titanium Outer Chassis -->
+          <div class="relative rounded-[3.25rem] border-[2px] border-slate-700/80 bg-neutral-950 p-[11px] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.85)] ring-1 ring-white/10">
+            <!-- Subtle Side Hardware Buttons -->
+            <div class="absolute -left-[4px] top-24 h-7 w-[3px] rounded-l bg-slate-700"></div>
+            <div class="absolute -left-[4px] top-36 h-12 w-[3px] rounded-l bg-slate-700"></div>
+            <div class="absolute -left-[4px] top-52 h-12 w-[3px] rounded-l bg-slate-700"></div>
+            <div class="absolute -right-[4px] top-40 h-16 w-[3px] rounded-r bg-slate-700"></div>
+
+            <!-- Edge-to-Edge 19.5:9 Display Viewport -->
+            <div
+              id="phone-screen-container"
+              class="relative aspect-[1206/2622] w-full overflow-hidden rounded-[2.55rem] bg-slate-900 transition-colors duration-300"
+            >
+              <!-- Dynamic Island Overlay (Positioned inside top status bar safe area) -->
+              <div
+                aria-hidden="true"
+                class="pointer-events-none absolute left-1/2 top-[11px] z-20 flex h-[22px] w-[86px] -translate-x-1/2 items-center justify-end rounded-full bg-black px-2.5 shadow-sm ring-1 ring-white/5"
+              >
+                <span class="h-2.5 w-2.5 rounded-full bg-slate-900 ring-1 ring-slate-800"></span>
+              </div>
+
+              {screenshots.map((shot, idx) => (
+                <div
+                  data-shot-panel={idx}
+                  class:list={[
+                    'shot-panel absolute inset-0 transition-opacity duration-300',
+                    idx === 0 ? 'opacity-100' : 'pointer-events-none opacity-0',
+                  ]}
+                >
+                  <!-- Dark Theme Variant -->
+                  <div data-variant="dark" class="shot-variant h-full w-full">
+                    <img
+                      src={shot.darkImage}
+                      alt={`${shot.title} (Dark Theme)`}
+                      decoding="async"
+                      class="h-full w-full transform-gpu object-contain"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    />
+                    <div class="hidden h-full w-full flex-col items-center justify-center p-6 text-center">
+                      <span class="rounded-full bg-brand-500/15 px-3 py-1 text-xs font-medium text-brand-400">
+                        Dark Screenshot Placeholder
+                      </span>
+                      <p class="mt-3 font-semibold text-white">{shot.title}</p>
+                      <p class="mt-1 text-xs text-slate-400">Add <code>public{shot.darkImage}</code></p>
+                    </div>
+                  </div>
+
+                  <!-- Light Theme Variant -->
+                  <div data-variant="light" class="shot-variant hidden h-full w-full">
+                    <img
+                      src={shot.lightImage}
+                      alt={`${shot.title} (Light Theme)`}
+                      decoding="async"
+                      class="h-full w-full transform-gpu object-contain"
+                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    />
+                    <div class="hidden h-full w-full flex-col items-center justify-center bg-slate-100 p-6 text-center">
+                      <span class="rounded-full bg-brand-500/20 px-3 py-1 text-xs font-semibold text-brand-700">
+                        Light Screenshot Placeholder
+                      </span>
+                      <p class="mt-3 font-semibold text-slate-900">{shot.title}</p>
+                      <p class="mt-1 text-xs text-slate-600">Add <code>public{shot.lightImage}</code></p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.shot-tab');
+  const panels = document.querySelectorAll('.shot-panel');
+  const themeBtns = document.querySelectorAll('.theme-toggle-btn');
+  const variants = document.querySelectorAll('.shot-variant');
+  const screenContainer = document.getElementById('phone-screen-container');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-shot-index');
+
+      tabs.forEach((t) => {
+        t.classList.remove('border-brand-500', 'bg-slate-800/90', 'shadow-lg', 'shadow-brand-950/40');
+        t.classList.add('border-slate-800', 'bg-slate-900/60');
+      });
+
+      tab.classList.remove('border-slate-800', 'bg-slate-900/60');
+      tab.classList.add('border-brand-500', 'bg-slate-800/90', 'shadow-lg', 'shadow-brand-950/40');
+
+      panels.forEach((p) => {
+        if (p.getAttribute('data-shot-panel') === target) {
+          p.classList.remove('opacity-0', 'pointer-events-none');
+          p.classList.add('opacity-100');
+        } else {
+          p.classList.add('opacity-0', 'pointer-events-none');
+          p.classList.remove('opacity-100');
+        }
+      });
+    });
+  });
+
+  themeBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const selectedTheme = btn.getAttribute('data-theme-btn');
+
+      themeBtns.forEach((b) => {
+        b.classList.remove('bg-brand-500', 'font-bold', 'text-slate-950');
+        b.classList.add('text-slate-300');
+      });
+
+      btn.classList.add('bg-brand-500', 'font-bold', 'text-slate-950');
+      btn.classList.remove('text-slate-300');
+
+      variants.forEach((v) => {
+        if (v.getAttribute('data-variant') === selectedTheme) {
+          v.classList.remove('hidden');
+        } else {
+          v.classList.add('hidden');
+        }
+      });
+
+      if (screenContainer) {
+        if (selectedTheme === 'light') {
+          screenContainer.classList.remove('bg-slate-900');
+          screenContainer.classList.add('bg-slate-100');
+        } else {
+          screenContainer.classList.remove('bg-slate-100');
+          screenContainer.classList.add('bg-slate-900');
+        }
+      }
+    });
+  });
+</script>
