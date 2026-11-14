@@ -198,5 +198,15 @@
     "title": "Best Tool for the Watch Enthusiasts",
     "body": "Love the new design.",
     "version": "v1.19.7"
+  },
+  {
+    "id": "rev-20",
+    "platform": "google",
+    "author": "James Akrong",
+    "date": "Jul 30, 2026",
+    "rating": 5,
+    "title": "Was already a great app",
+    "body": "Was already a great app, but amazing after the latest updates. Developer was really responsive to feedback as well",
+    "version": "Google Play"
   }
 ]
