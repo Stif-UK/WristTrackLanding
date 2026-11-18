@@ -12,16 +12,16 @@ Got some suggestions for features, bug fixes or improvements you’d like to see
 
 ### `Latest`
 # **Version 2.0.0**
-Over three years on from WristTrack v1.0 I'm releasing an update so big that it feels like it justifies a _major_ version bump, taking us up to **WristTrack 2.0**
+Over four years on from WristTrack v1.0 I'm releasing an update so big that it feels like it justifies a _major_ version bump, taking us up to **WristTrack 2.0**
 
 WristTrack has always been built around a _fast_, _local_ database - it works offline because it doesn't need an internet connection to find your watches, and you can filter your charts and data quickly because the core data lives in memory as you use the app... but this causes some challenges, as up until now moving to a new device has meant extracting the database and then restoring it elsewhere. It has also meant that officially supporting tablets and iPads hasn't been a priority, as using the app across two (or more) devices wasn't easy.
 
-**WristTrack 2.0** changes that...
+**WristTrack 2.0 changes that...**
 
 **First,** there is now a **new login option** - you can create an account and have _WristTrack_ back your data up to the cloud. Now I fully appreciate that not everyone wants to trust me (or anyone else) with the details of their watch collection, so logging in remains completely optional - you can keep the data on-device only by simply doing nothing... but if you do want to backup to the cloud, the option is now there.
-...that's not all though as while the database remains _local first_ (i.e. your phone is the source of truth and _continues to work offline_), it simply pushes any changes made locally to the cloud, which then notifies any other devices to update in near real-time. _(A small word of warning, this does mean that if using multiple devices the cloud database takes a 'newest update wins' approach - so proceed with caution if using multiple devices at the same time!)_
+The app database remains _local first_ (i.e. your phone is the source of truth and _continues to work offline_), it simply pushes any changes made locally to the cloud, which then notifies any other devices to update in near real-time. _(A small word of warning, this does mean that if using multiple devices the cloud database takes a 'newest update wins' approach - so proceed with caution if using multiple devices at the same time!)_
 
-**Second,** now that WristTrack is easy to use across multiple devices, it felt only right to **the _official_ support to include tablets (including iPads) and the new kid on the block the iPhone Duo** (the app should already have worked ok on Android devices, but Apple needed a little more work - although across the board it should now make better use of space where available!)
+**Second,** now that WristTrack is easy to use across multiple devices, it felt only right to **add _official_ support to include tablets (including iPads) and the new kid on the block the iPhone Duo** (the app should already have worked ok on Android devices, but Apple needed a little more work - although across the board it should now make better use of space where available!)
 
 ...and despite those two changes being _pretty huge_, I've included a bunch of other _big_ updates in this release!
 
@@ -29,6 +29,10 @@ WristTrack has always been built around a _fast_, _local_ database - it works of
 
 **GMT Function:** In version 1.19 I added the ability to save an offset to then show a second time based on this - this was useful to some, but really wasn't a fully realised feature in hindsight. I had some great feedback and suggestions though so I have replaced this with an improved version.
 Now you can save multiple timezones and see the time in each, either by searching for ISO standard locations (e.g. London, New York etc) or by saving your own offset. Either way you can title the record whatever you like (note, the GMT option remains a WristTrack Pro feature)
+
+**Moonphase calculator:** In the last release I added more information to the Moonphase calculator (another Pro feature). In the last release I added the ability to see the upcoming dates of the next four moon quarter, in this release I add the _number of days since the last new moon_.
+The moon phase values in **WristTrack** are calculated using the synodic month (29.5 days) rather than the sidereal month (27.3 days) which many other moon phase systems use - this matters to us watch nerds as watch movements utilise the synodic month in their mechanisms (usually the mechanisms are set to rotate over 59 days - 2 x 29.5). Thus the calculation in WristTrack is aligned specifically to give you the best value to set your moonphase watch with! 
+
 
 
 
