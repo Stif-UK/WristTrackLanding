@@ -1,0 +1,150 @@
+---
+import media from '../data/media.json';
+
+interface MediaLink {
+  label: string;
+  url: string;
+}
+
+interface MediaItem {
+  id: string;
+  type: 'article' | 'video' | 'podcast' | string;
+  outlet: string;
+  title: string;
+  date: string;
+  url?: string;
+  links?: MediaLink[];
+  highlight?: string;
+  description: string;
+}
+
+const items = media as MediaItem[];
+
+const typeMeta = {
+  article: {
+    label: 'Article',
+    cta: 'Read Article',
+    badgeClass: 'border-brand-500/30 bg-brand-500/10 text-brand-300',
+  },
+  video: {
+    label: 'YouTube',
+    cta: 'Watch Video',
+    badgeClass: 'border-rose-500/30 bg-rose-950/50 text-rose-300',
+  },
+  podcast: {
+    label: 'Podcast',
+    cta: 'Listen Now',
+    badgeClass: 'border-amber-500/30 bg-amber-950/50 text-amber-300',
+  },
+} as const;
+---
+
+{items.length > 0 && (
+  <section id="media" class="border-t border-slate-800/80 py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <span class="text-xs font-bold uppercase tracking-wider text-brand-400">In the Wild</span>
+        <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+          Featured &amp; Mentioned In
+        </h2>
+        <p class="mt-3 text-slate-400">
+          Articles, videos, and podcasts from around the watch community featuring WristTrack.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => {
+          const meta = typeMeta[item.type as keyof typeof typeMeta] ?? typeMeta.article;
+          const hasMultipleLinks = Array.isArray(item.links) && item.links.length > 0;
+          const CardTag = hasMultipleLinks ? 'article' : 'a';
+          const cardLinkProps = hasMultipleLinks
+            ? {}
+            : { href: item.url, target: '_blank', rel: 'noopener noreferrer' };
+
+          return (
+            <CardTag
+              {...cardLinkProps}
+              class="group flex flex-col justify-between rounded-2xl border border-slate-800 bg-slate-900/70 p-6 transition hover:border-brand-500/60 hover:bg-slate-900"
+            >
+              <div>
+                <!-- Top Row: Format Badge + Optional Context Pill -->
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span
+                    class:list={[
+                      'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-medium',
+                      meta.badgeClass,
+                    ]}
+                  >
+                    {item.type === 'video' && (
+                      <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                    )}
+                    {item.type === 'podcast' && (
+                      <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M12 1a9 9 0 0 0-9 9v7c0 1.66 1.34 3 3 3h3v-8H5v-2c0-3.87 3.13-7 7-7s7 3.13 7 7v2h-4v8h3c1.66 0 3-1.34 3-3v-7a9 9 0 0 0-9-9z" />
+                      </svg>
+                    )}
+                    {item.type === 'article' && (
+                      <svg class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                      </svg>
+                    )}
+                    {meta.label}
+                  </span>
+
+                  {item.highlight && (
+                    <span class="rounded-full bg-slate-800 px-2.5 py-0.5 text-[11px] font-medium text-slate-300">
+                      {item.highlight}
+                    </span>
+                  )}
+                </div>
+
+                <!-- Outlet & Title -->
+                <p class="mt-4 text-xs font-semibold uppercase tracking-wider text-brand-400">
+                  {item.outlet}
+                </p>
+                <h3 class="mt-1 text-lg font-semibold leading-snug text-white transition group-hover:text-brand-300">
+                  {item.title}
+                </h3>
+
+                <!-- Description -->
+                <p class="mt-2.5 text-sm leading-relaxed text-slate-300">
+                  {item.description}
+                </p>
+              </div>
+
+              <!-- Footer: Date + Single CTA or Multi-Platform Pills -->
+              <div class="mt-6 border-t border-slate-800/80 pt-3 text-xs">
+                {hasMultipleLinks ? (
+                  <div class="flex flex-col gap-2.5">
+                    <span class="text-slate-500">{item.date}</span>
+                    <div class="flex flex-wrap gap-2">
+                      {item.links!.map((link) => (
+                        <a
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="inline-flex items-center gap-1 rounded-lg border border-slate-700/80 bg-slate-800/90 px-2.5 py-1.5 font-semibold text-brand-400 transition hover:border-brand-500/60 hover:bg-slate-800 hover:text-brand-300"
+                        >
+                          {link.label} ↗
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <div class="flex items-center justify-between">
+                    <span class="text-slate-500">{item.date}</span>
+                    <span class="font-semibold text-brand-400 transition group-hover:translate-x-0.5 group-hover:text-brand-300">
+                      {meta.cta} ↗
+                    </span>
+                  </div>
+                )}
+              </div>
+            </CardTag>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+)}

@@ -1,0 +1,59 @@
+[
+  {
+    "id": "media-1",
+    "type": "podcast",
+    "outlet": "Overtime the Podcast",
+    "title": "Season 4, Episode 2: Grant (WristTrack App) - Watch Collecting by the Numbers",
+    "date": "January 2026",
+    "links": [
+      { "label": "Apple Podcasts", "url": "https://podcasts.apple.com/us/podcast/grant-wristtrack-app-watch-collecting-by-the-numbers/id1699200547?i=1000745909483" },
+      { "label": "Spotify", "url": "https://open.spotify.com/episode/6wHnek2LPmegs5dTtKEmCu?si=844404fef8654f40" },
+      { "label": "YouTube", "url": "https://www.youtube.com/watch?v=fbxYOBXbcR8" }
+    ],
+    "highlight": "Founder Interview",
+    "description": "Grant from WristTrack sits down with Praka from Overtime the Podcast to discuss microbrand watches and developing an app for watch enthusiasts."
+  },
+  {
+    "id": "media-2",
+    "type": "article",
+    "outlet": "Timefiles.ch",
+    "title": "WristTrack, the App for Watch Nerds You Didn’t Know You Needed",
+    "date": "March 2025",
+    "url": "https://timefiles.ch/post/wristtrack-the-app-for-watch-nerds-you-didnt-know-you-needed/",
+    "highlight": "Full Feature",
+    "description": "Featured on TimeFiles: “WristTrack, the App for Watch Nerds You Didn't Know You Needed” — a behind-the-scenes Q&A with creator Grant Hutchison on building the app and tracking watch rotation data."
+  },
+  {
+    "id": "media-3",
+    "type": "video",
+    "outlet": "Salt & Bezel | Watch Reviews",
+    "title": "Most Worn Watches of 2026 (So Far)",
+    "date": "July 2026",
+    "url": "https://www.youtube.com/watch?v=xwMyjvQkDrg",
+    "highlight": "YouTube Showcase",
+    "description": "An unsponsored mid-year collection countdown powered by six months of daily WristTrack wear stats, complete with an in-app walkthrough."
+  },
+  {
+    "id": "media-4",
+    "type": "podcast",
+    "outlet": "Dial and Aperture",
+    "title": "Episode 2 - Formal Introductions: Who we are and what we do",
+    "date": "December 2025",
+    "links": [
+      { "label": "Apple Podcasts", "url": "https://podcasts.apple.com/us/podcast/dial-and-aperture-ep-2-formal-introductions-who-we/id1862612981?i=1000742843957" },
+      { "label": "Spotify", "url": "https://open.spotify.com/episode/44n1QukIdN5YSygPijvQ63?si=Jyj73zcoQ0q-yK05AV1S8Q" }
+    ],
+    "highlight": "Podcast Recommendation (timestamp 55:14)",
+    "description": "Hosted by watch photographers Nacho Conde and Morgan Saignes, exploring photography, watches, and gear—featuring WristTrack as Morgan's pick in the episode's listener recommendations segment."
+  },
+  {
+    "id": "media-5",
+    "type": "video",
+    "outlet": "RELOGIAR (YouTube)",
+    "title": "Leve a Sua Coleção de Relógios para Todos os Lugares | Conheça o App Wrist Track",
+    "date": "2026",
+    "url": "https://www.youtube.com/watch?v=ACllXerxjzM",
+    "highlight": "App Walkthrough (Portuguese)",
+    "description": "A dedicated hands-on tour of WristTrack Pro by Felipe, demonstrating collection cataloging, cost-per-wear tracking, and horological wear statistics."
+  }
+]
